@@ -1,8 +1,14 @@
+@font-face {
+    font-family: BebasNeueBold;
+    src: url(./fonts/BebasNeue Bold.otf);
+}
+
 html {
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgb(240, 240, 240);
+    min-width: 420px;
 }
 body {
     display: flex;
@@ -30,6 +36,82 @@ header {
     color: #FBFBFB;
     background: #1E1E1E;
 }
+
+header .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 80%;
+    height: 100%;
+}
+
+header .title h2 {
+    margin: 4px 0 0 75px;
+    font-size: 2em;
+    letter-spacing: 0.075em;
+    font-family: 'BebasNeueBold', Helvetica;
+    transform: skew(-10deg);
+}
+
+header .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 20%;
+    position: relative;
+    height: 55px;
+    width: 55px;
+    cursor: pointer;
+}
+
+header .menu span {
+    position: relative;
+    width: 35px;
+    height: 2px;
+    background: #FBFBFB;
+    border-radius: 2px;
+    margin: 29px auto;
+    cursor: pointer;
+}
+
+.menu.open span {
+    background: transparent;
+}
+
+header .menu span::before, header .menu span::after {
+    content: "";
+    position: absolute;
+    top: 24px;
+    left: 6px;
+    width: 25px;
+    height: 2px;
+    background: #FBFBFB;
+    border-radius: 3px;
+    transition: 0.2s ease-in-out;
+}
+
+header .menu span::before {
+    top: -8px;
+}
+
+header .menu span::after {
+    top: 8px;
+}
+
+header .menu.open span::before {
+    border-radius: 12px;
+    -webkit-transform: translateY(10px) scale(1.4) rotate(45deg);
+    -ms-transform: translateY(10px) scale(1.4) rotate(45deg);
+    transform: translateY(10px) scale(1.4) rotate(45deg);
+}
+
+header .menu.open span::after {
+    border-radius: 12px;
+    -webkit-transform: translateY(-10px) scale(1.4) rotate(-45deg);
+    -ms-transform: translateY(-10px) scale(1.4) rotate(-45deg);
+    transform: translateY(-10px) scale(1.4) rotate(-45deg);
+}
+
 
 main {
 
