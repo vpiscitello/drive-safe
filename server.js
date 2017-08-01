@@ -67,6 +67,7 @@ app.get('/', function(request, response, next) {
 });
 
 app.use('/access', require(__dirname + '/modules/sv/auth/access.js'));
+app.use('/registration', require(__dirname + '/modules/sv/auth/registration.js'));
 app.use('/rewards', require(__dirname + '/modules/sv/account/rewards.js'));
 app.use('/profile', require(__dirname + '/modules/sv/account/profile.js'));
 
@@ -76,7 +77,7 @@ app.use('/profile', require(__dirname + '/modules/sv/account/profile.js'));
 app.get('*', function(request, response, next) {
     response.status(404).render('not-found', {
         title: 'Page Not Found',
-        pagestyle: 'convert-error'
+        pagestyle: 'server-error'
     });
     console.log('== File Not Found | Status Code', response.statusCode);
     console.log('== Request', request.path, '\n');

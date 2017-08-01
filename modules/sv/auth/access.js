@@ -8,16 +8,17 @@ var path = require('path'),
 var router = express.Router();
 
 /******************************************************************************
-Main Request Handler
+Main Access Request Handler
 ******************************************************************************/
 router.get('/', function(request, response, next) {
 
     console.log('== Recieved New Access Request\n');
 
-
-    response.status(200).send('');
+    response.status(200).render('access', {
+        title: 'Drive Save',
+        pagestyle: 'logon'
+    });
 
 });
-
 
 module.exports = router;

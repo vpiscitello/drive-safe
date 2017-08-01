@@ -5,7 +5,6 @@
 <main>
     <article class="instructions">
         <section class="text">
-            <p>Welcome to CSV to HTML Converter, this application will take spreadsheet and convert it to a HTML table for easy web display. You will be able to select a table sorting method and even split your data into seperate tables based queries of your choice. To get started simply select your desired settings, upload your file, and click run!</p>
         </section>
     </article>
     <article class="settings">
@@ -13,7 +12,7 @@
         <form role="form">
             <fieldset class="presetting">
                 <input id="preset" type="checkbox" name="preset" class="parent">
-                <label for="preset"><h3>Organization Preset Code</h3></label>
+                <label for="preset"><h3></h3></label>
                 <fieldset class="org-field">
                     <div class="wrapper">
                         <input type="text" name="org-name" maxlength="12">
@@ -21,49 +20,7 @@
                     </div>
                 </fieldset>
             </fieldset>
-            <fieldset class="splitting">
-                <input id="split" type="checkbox" name="split" class="parent">
-                <label for="split"><h3>Split Data</h3></label>
-                <fieldset class="split-fields">
-                    <div class="wrapper"></div>
-                    <button type="button" name="add-query">Add Split Query</button>
-                </fieldset>
-            </fieldset>
-            <fieldset class="sorting">
-                <input id="sort" type="checkbox" name="sort" class="parent">
-                <label for="sort"><h3>Sort Data</h3></label>
-                <fieldset class="sort-method">
-                    <div class="wrapper">
-                        <input id="ascend" type="radio" name="sort-type">
-                        <label for="ascend"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i></label>
-                        <input id="descend" type="radio" name="sort-type">
-                        <label for="descend"><i class="fa fa-sort-amount-asc" aria-hidden="true"></i></label>
-                        <div class="column-selection">
-                            <input id="sort-column" type="number" name="sort-column" value="1" min="1" max="12" maxlength="2">
-                            <label for="sort-column">Sort By Column</label>
-                        </div>
-                    </div>
-                </fieldset>
-            </fieldset>
         </form>
-    </article>
-    <article class="upload">
-        <section class="file-drop empty">
-            <input type="file" name="convfile"  accept="text/csv, application/vnd.oasis.opendocument.spreadsheet, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" multiple>
-            <div class="selection">
-                <i class="fa fa-upload icon" aria-hidden="true"></i>
-                <p>Drop or Select File</p>
-            </div>
-        </section>
-        <section class="file-submit">
-            <button type="submit" name="file-submit">Convert File</button>
-        </section>
-    </article>
-    <article class="preview">
-
-    </article>
-    <article class="download">
-
     </article>
 </main>
 

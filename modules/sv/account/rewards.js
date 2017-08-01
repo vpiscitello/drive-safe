@@ -12,7 +12,10 @@ router.get('/', function(request, response, next) {
     console.log('== Recieved New Rewards Request\n');
 
 
-    response.status(200).send('');
+    response.status(200).render('rewards', {
+        title: 'Drive Save',
+        pagestyle: 'rewards'
+    });
 
 });
 

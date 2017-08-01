@@ -7,7 +7,8 @@ html {
 body {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
     width: 375px;
     height: 667px;
     margin: 0;
@@ -18,6 +19,257 @@ body {
     background: #FBFBFB;
 }
 
+header {
+    width: 100%;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 0px;
+    color: #FBFBFB;
+    background: #1E1E1E;
+}
+
 main {
 
+}
+
+button {
+    position: relative;
+    float: right;
+    border: none;
+    padding: 0 20px;
+    margin: 4px 24px 4px 4px;
+    height: 28px;
+    cursor: pointer;
+    color: #FBFBFB;
+    font-size: 15px;
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid #454545;
+    box-shadow: 0 2px 0 #000000, 2px 2px 0 #000000;
+    background: #454545;
+    transition: 0.2s ease-in-out all;
+    -webkit-backface-visibility: hidden;
+}
+
+button:hover {
+    margin: 6px 22px 4px 4px;
+    border: 1px solid #000000;
+    box-shadow: 0 2px 0 transparent, 2px 2px 0 transparent;
+}
+
+article.instructions {
+    width: 80%;
+    min-width: 300px;
+    max-width: 760px;
+    margin: 60px auto;
+}
+
+article {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    min-width: 300px;
+    max-width: 680px;
+    margin: 10px auto;
+}
+
+article .error-console {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto;
+}
+
+.error-console .message {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+    height: 50px;
+    margin: 0 0.625em;
+    margin-bottom: 12px;
+    border-radius: 3px;
+    background: #E74C3C;
+}
+
+.error-console .message h3 {
+    flex: 1 1 80%;
+    margin: 0;
+    color: white;
+    font-size: 15px;
+}
+
+.error-console .message::before {
+    order: 0;
+    content: '\f00d';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 20%;
+    height: 100%;
+    margin-right: 15px;
+    opacity: 1;
+    color: #E74C3C;
+    font-size: 32px;
+    font-family: 'FontAwesome';
+    text-align: center;
+    line-height: auto;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background: #1E1E1E;
+}
+
+article form {
+    flex: 1 1 100%;
+    width: 100%;
+}
+
+article fieldset {
+    overflow: hidden;
+    min-height: 50px;
+    border: none;
+    background: none;
+}
+
+article fieldset:nth-child(even) {
+    /*background: #454545;*/
+}
+
+fieldset .wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    margin: 10px;
+}
+
+input[type=checkbox], input[type=radio] {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+}
+
+input[type=number] {
+    width: 60px;
+    text-align: center;
+}
+
+input[type=text] {
+    padding: 4px 12px;
+    font-size: 22px;
+    font-weight: 600;
+    border: 1px solid rgba(99,99,99,0.3);
+    border-radius: 6px;
+    background: rgba(255,255,255,0.4);
+}
+
+input[type=text]:focus, input[type=number]:focus {
+    outline: none !important;
+    border: 1px solid #19CC95 !important;
+    box-shadow: 0 0 10px rgba(30, 30, 30, 0.15);
+}
+
+input[type=checkbox].parent + label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 3px;
+    background: #454545;
+}
+
+input[type=checkbox].parent + label h3 {
+    order: 3;
+    margin: 0;
+    color: #FBFBFB;
+}
+
+input[type=checkbox].parent + label::before {
+    content: '\203A';
+    order: 1;
+    width: 30px;
+    height: 100%;
+    color: rgba(255,255,255,0.3);
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 41px;
+    transition: 0.2s ease all;
+}
+
+input[type=checkbox].parent + label::after {
+    order: 2;
+    content: '\f00c';
+    width: 40px;
+    height: 100%;
+    margin-right: 20px;
+    color: rgba(99,99,99,0.1);
+    font-size: 24px;
+    font-family: 'FontAwesome';
+    text-align: center;
+    line-height: 44px;
+    border-left: 1px solid #1E1E1E;
+    border-right: 1px solid #1E1E1E;
+    background: -webkit-linear-gradient(to right, #E6E9F0, #EEF1F5);
+    background: linear-gradient(to right, #E6E9F0, #EEF1F5);
+    transition: 0.2s ease all;
+}
+
+input[type=checkbox] + label {
+    cursor: pointer;
+    background: #1E1E1E;
+    z-index: 999;
+}
+
+input[type=checkbox].parent:checked + label {
+    background: #1E1E1E;
+}
+
+input[type=checkbox].parent:checked + label::before {
+    color: #FBFBFB;
+    line-height: 44px;
+    transform: rotate(90deg);
+}
+
+input[type=checkbox].parent + label:hover::after {
+    color: rgba(99,99,99,0.8);
+}
+
+article fieldset fieldset {
+    position: relative;
+    visibility: hidden;
+    opacity: 0;
+    margin-top: -120px;
+    background: linear-gradient(to right, #E6E9F0, #EEF1F5);
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border: 1px solid #dcdcdc;
+    transition:  0.4s ease all, 0.2s 0s ease opacity, 0s ease background;
+    z-index: -999;
+}
+
+input[type=checkbox]:checked ~ fieldset {
+    visibility: visible;
+    opacity: 1;
+    margin-top: 0px;
+    transition:  0.4s ease all, 0.4s 0.2s ease opacity, 0s ease background;
+    z-index: 0;
+}
+
+.success {
+    background: #19CC95;
+}
+
+.failed {
+    background: #E74C3C;
 }
