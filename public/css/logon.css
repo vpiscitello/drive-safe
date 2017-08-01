@@ -208,7 +208,9 @@ input[type=submit] {
 .login input[type='text']:focus,
 .login input[type='text']:hover,
 .login input[type='password']:focus,
-.login input[type='password']:hover {
+.login input[type='password']:hover,
+.login input[type='text'].valid,
+.login input[type='text'].valid {
     outline: none !important;
     border-left: 1px solid #19CC95 !important;
     box-shadow: 0 0 10px rgba(30, 30, 30, 0.15);
@@ -223,7 +225,7 @@ input[type=submit] {
 
 .submit-button {
     display: flex;
-    margin: 15px 50px;
+    margin: 30px 15px 40px;
     justify-content: center;
 }
 
