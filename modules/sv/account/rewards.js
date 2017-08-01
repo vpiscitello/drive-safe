@@ -13,7 +13,7 @@ router.get('/', function(request, response, next) {
 
 
     response.status(200).render('rewards', {
-        title: 'Drive Save',
+        title: 'Drive Safe',
         pagestyle: 'rewards'
     });
 

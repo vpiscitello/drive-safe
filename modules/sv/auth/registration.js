@@ -15,7 +15,7 @@ router.get('/', function(request, response, next) {
     console.log('== Recieved New Registration Request\n');
 
     response.status(200).render('registration', {
-        title: 'Drive Save',
+        title: 'Drive Safe',
         pagestyle: 'registration'
     });
 
