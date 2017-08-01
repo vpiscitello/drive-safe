@@ -9,7 +9,14 @@ html {
     justify-content: center;
     background: rgb(240, 240, 240);
     min-width: 420px;
+    font-size: 14px;
+    font-family: 'Muli';
 }
+
+h1, h2, h3 {
+    font-family: 'BebasNeueBold';
+}
+
 body {
     display: flex;
     align-items: center;
@@ -26,14 +33,18 @@ body {
 }
 
 header {
-    width: 100%;
-    height: 55px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 1 1 55px;
     position: relative;
     top: 0px;
+    width: 100%;
+    height: 55px;
+    min-height: 55px;
     color: #FBFBFB;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
     background: #1E1E1E;
 }
 
@@ -47,10 +58,11 @@ header .title {
 
 header .title h2 {
     margin: 4px 0 0 75px;
-    font-size: 2em;
+    font-size: 2.2em;
     letter-spacing: 0.075em;
     font-family: 'BebasNeueBold', Helvetica;
     transform: skew(-10deg);
+    cursor: default;
 }
 
 header .menu {
@@ -114,7 +126,12 @@ header .menu.open span::after {
 
 
 main {
-
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100% - 55px);
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 button {
@@ -140,24 +157,6 @@ button:hover {
     margin: 6px 22px 4px 4px;
     border: 1px solid #000000;
     box-shadow: 0 2px 0 transparent, 2px 2px 0 transparent;
-}
-
-article.instructions {
-    width: 80%;
-    min-width: 300px;
-    max-width: 760px;
-    margin: 60px auto;
-}
-
-article {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    width: 90%;
-    min-width: 300px;
-    max-width: 680px;
-    margin: 10px auto;
 }
 
 article .error-console {
@@ -250,12 +249,6 @@ input[type=text] {
     border: 1px solid rgba(99,99,99,0.3);
     border-radius: 6px;
     background: rgba(255,255,255,0.4);
-}
-
-input[type=text]:focus, input[type=number]:focus {
-    outline: none !important;
-    border: 1px solid #19CC95 !important;
-    box-shadow: 0 0 10px rgba(30, 30, 30, 0.15);
 }
 
 input[type=checkbox].parent + label {
@@ -354,4 +347,10 @@ input[type=checkbox]:checked ~ fieldset {
 
 .failed {
     background: #E74C3C;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
 }

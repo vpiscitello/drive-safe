@@ -5,6 +5,7 @@ var path = require('path'),
     compression = require('compression'),
     assert = require('assert'),
     bodyParser = require('body-parser'),
+    checkAuth = require(__dirname + '/modules/sv/auth/checkAuth.js'),
     helpers = require(__dirname + '/modules/sv/helpers/handlebar-helpers.js')();
 
 require('dotenv').config({
@@ -68,8 +69,15 @@ app.get('/', function(request, response, next) {
 
 app.use('/access', require(__dirname + '/modules/sv/auth/access.js'));
 app.use('/registration', require(__dirname + '/modules/sv/auth/registration.js'));
+app.use('/policy', require(__dirname + '/modules/sv/etc/policy.js'));
+
+// Uncomment for unsecure routes
 app.use('/rewards', require(__dirname + '/modules/sv/account/rewards.js'));
 app.use('/profile', require(__dirname + '/modules/sv/account/profile.js'));
+
+// Uncomment for secure routes
+// app.use('/rewards', checkAuth, require(__dirname + '/modules/sv/account/rewards.js'));
+// app.use('/profile', checkAuth, require(__dirname + '/modules/sv/account/profile.js'));
 
 /******************************************************************************
 404 Error Handling

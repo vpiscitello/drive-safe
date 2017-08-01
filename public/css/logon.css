@@ -1,7 +1,328 @@
-body {
+/** ****************************************************************************
+*** Base Styling
+*** *****************************************************************************/
 
+body {
     background: #4CB8C4;
     background: -webkit-linear-gradient(to bottom, #3CD3AD, #4CB8C4);
     background: linear-gradient(to bottom, #3CD3AD, #4CB8C4);
+}
 
+article {
+    width: 100%;
+    font-size: 1em;
+}
+
+a {
+    color: #eee;
+    outline: 0;
+    text-decoration: none;
+}
+
+a:focus,
+a:hover {
+    color: rgb(15, 15, 15);
+    text-decoration: none;
+}
+
+.form {
+    display: flex;
+    max-width: 600px;
+    flex-direction: column;
+}
+
+input[type=submit] {
+    letter-spacing: 0.05em;
+}
+
+/* Place Holder CSS for Focus */
+
+::-webkit-input-placeholder {
+    opacity: .5;
+    -webkit-transition: opacity .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
+}
+
+:-moz-placeholder {
+    opacity: .5;
+    -webkit-transition: opacity .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
+}
+
+::-moz-placeholder {
+    opacity: .5;
+    -webkit-transition: opacity .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
+}
+
+:-ms-input-placeholder {
+    opacity: .5;
+    -webkit-transition: opacity .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
+}
+
+:hover::-webkit-input-placeholder {
+    opacity: 1;
+}
+
+:hover:-moz-placeholder {
+    opacity: 1;
+}
+
+:hover::-moz-placeholder {
+    opacity: 1;
+}
+
+:hover:-ms-input-placeholder {
+    opacity: 1;
+}
+
+/* Place Holder CSS for Focus */
+
+:focus::-webkit-input-placeholder {
+    opacity: 0;
+}
+
+:focus:-moz-placeholder {
+    opacity: 0;
+}
+
+:focus::-moz-placeholder {
+    opacity: 0;
+}
+
+:focus:-ms-input-placeholder {
+    opacity: 0;
+}
+
+/** ****************************************************************************
+*** Login Top Email Row
+*** *****************************************************************************/
+
+.login-box {
+    margin: 100px auto;
+}
+
+.login-top-row {
+    margin: 100px 30px 0 30px;
+}
+
+
+.login-field {
+    display: flex;
+}
+
+.register-field {
+    display: block;
+}
+
+.login-field,
+.register-field {
+    position: relative;
+    margin: 10px;
+    justify-content: center;
+}
+
+.login-field label,
+.register-field label {
+    width: 20px;
+}
+
+.password svg,
+.username svg {
+    position: absolute;
+    transition: .2s ease-in-out all;
+}
+
+.username svg {
+    padding: 10px 2.5px;
+}
+
+.password svg {
+    padding: 7.5px 0;
+}
+
+.login-field label {
+    display: inline-flex;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-right: 1px solid #202020;
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+    background-color: #2d2d2d;
+}
+
+.login-field input:focus + label,
+.login-field input:valid + label {
+    background-color: rgb(15, 15, 15);
+}
+
+.login-field input:focus + label svg,
+.login-field input:valid + label svg {
+    fill: #fbfbfb;
+}
+
+.login-field label,
+.login-field label {
+    order: 0;
+}
+
+.login-field input,
+.login-field input {
+    order: 1;
+}
+
+.login-top-row input {
+    margin: 0;
+    padding: 0 1em;
+    color: inherit;
+    border: 0;
+    border-radius: 0;
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+    background-image: none;
+    outline: 0;
+    font: inherit;
+    -webkit-transition: background-color .3s;
+    transition: background-color .3s;
+}
+
+.login-field input[type=password],
+.login-field input[type=text] {
+    position: relative;
+    width: 97.2%;
+    height: 35px;
+    margin: 0 auto;
+    color: rgba(220, 220, 220, 1);
+    border: 0 none;
+    border-left: 1px solid transparent;
+    background: rgba(65, 65, 65, 1);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .3) inset,
+                                     0 1px rgba(255, 255, 255, .06);
+    font-weight: 300;
+    letter-spacing: .15em;
+    transition: background .2s;
+    cursor: text;
+}
+
+.login input[type='text']:focus,
+.login input[type='text']:hover,
+.login input[type='password']:focus,
+.login input[type='password']:hover {
+    outline: none !important;
+    border-left: 1px solid #19CC95 !important;
+    box-shadow: 0 0 10px rgba(30, 30, 30, 0.15);
+}
+
+.login-field:hover .password svg,
+.login-field:hover .username svg,
+.login-field input:valid .password svg,
+.login-field input:valid .username svg {
+    fill: #e2dede;
+}
+
+.submit-button {
+    display: flex;
+    margin: 15px 50px;
+    justify-content: center;
+}
+
+.login-top-row input[type='submit'] {
+    width: 100%;
+    padding: 16px;
+    padding: 1rem;
+    color: #fbfbfb;
+    border-radius: 2rem;
+    background-color: rgba(30, 30, 30, 0.95);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .15em;
+    cursor: pointer;
+}
+
+.login-top-row input[type='submit']:hover {
+    background-color: rgba(20, 20, 20, 1);
+}
+
+
+/** ****************************************************************************
+*** Login Bottom Help Row
+*** *****************************************************************************/
+
+.help {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    margin: 0 20px;
+}
+
+.help p,
+.help p a {
+    height: 20px;
+    padding: .5em;
+    color: #fbfbfb;
+    overflow: hidden;
+    font-weight: 300;
+    letter-spacing: .05em;
+    cursor: pointer;
+}
+
+.help p:first-child {
+    justify-content: flex-start;
+}
+
+.help p:last-child {
+    justify-content: flex-end;
+}
+
+.forgot p {
+    margin-left: .5rem;
+}
+
+.forgot p:focus,
+.forgot p:hover,
+.help p a:focus,
+.help p a:hover {
+    color: rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+
+
+/** ****************************************************************************
+*** Info Row
+*** *****************************************************************************/
+
+article.info {
+    margin-top: auto;
+    font-size: 0.8em;
+}
+
+.policy {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.policy p,
+.policy p a {
+    height: 20px;
+    padding: .5em;
+    color: #fbfbfb;
+    overflow: hidden;
+    font-weight: 300;
+    letter-spacing: .05em;
+    cursor: pointer;
+}
+
+.policy p:first-child {
+    justify-content: flex-start;
+}
+
+.policy p:last-child {
+    justify-content: flex-end;
+}
+
+.policy p a:focus,
+.policy p a:hover {
+    color: rgba(0, 0, 0, 0.3);
+    text-decoration: none;
 }

@@ -1,0 +1,98 @@
+html {
+    min-width: 0px;
+}
+
+.heading-container {
+    background-color: #1E1E1E;
+}
+
+.greeting {
+    height: 160px;
+    margin: 0 20px;
+}
+
+.greeting .wrapper {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: #FBFBFB;
+}
+
+.greeting .wrapper h2 {
+    letter-spacing: 0.075em;
+}
+
+.greeting .wrapper h4 {
+    font-weight: 100;
+}
+
+.policy {
+    position: relative;
+    width: calc(100% - 40px);
+    margin: 20px;
+}
+
+.policy-text {
+    position: relative;
+    top: 20px;
+    width: 100%;
+    margin-bottom: 80px;
+    text-align: left;
+    color: #1E1E1E;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.policy-text li {
+    margin: 0 0 40px 0;
+}
+
+.policy-text h2 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.policy-text h3 {
+    font-size: 24px;
+    font-weight: 700;
+    -webkit-margin-before: 0.5em;
+    -webkit-margin-after: 0.5em;
+}
+
+.policy-text h5 {
+    -webkit-margin-before: 0.5em;
+    -webkit-margin-after: 0;
+}
+
+.policy-text a {
+    color: #1E1E1E;
+}
+
+.policy-text a:hover {
+    color: rgba(216, 110, 57, 1);
+}
+
+.policy-text p {
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
+
+@media (max-width: 460px) {
+    .popup-header {
+        position: relative;
+        width: 100px;
+        margin: 0 auto;
+    }
+
+    .main {
+        padding: 0 0 20px 0;
+    }
+
+    .greeting .wrapper {
+         top: 0;
+         transform: translateY(0);
+    }
+
+}
