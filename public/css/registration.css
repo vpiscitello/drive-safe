@@ -1,1 +1,30 @@
+input[type=checkbox].parent + label::before {
+    content: '\203A';
+    order: 1;
+    width: 30px;
+    height: 100%;
+    color: rgba(255,255,255,0.3);
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 41px;
+    transition: 0.2s ease all;
+}
 
+input[type=checkbox].parent:checked + label {
+    background: #1E1E1E;
+}
+
+input[type=checkbox].parent:checked + label::before {
+    color: #FBFBFB;
+    line-height: 44px;
+    transform: rotate(90deg);
+}
+
+input[type=checkbox]:checked ~ fieldset {
+    visibility: visible;
+    opacity: 1;
+    margin-top: 0px;
+    transition:  0.4s ease all, 0.4s 0.2s ease opacity, 0s ease background;
+    z-index: 0;
+}

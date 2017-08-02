@@ -214,8 +214,8 @@ nav ul li a .chevron {
     width: 0px;
     height: 100%;
     background: #3CD3AD;
-    background: -webkit-linear-gradient(to left, #3CD3AD, #4dc4b6);
-    background: linear-gradient(to left, #3CD3AD, #4dc4b6);
+    background: -webkit-linear-gradient(to left, #3CD3AD, #4DC4B6);
+    background: linear-gradient(to left, #3CD3AD, #4DC4B6);
     transform: skew(15deg);
     transition: 0.3s ease-in-out all;
 }
@@ -350,13 +350,9 @@ article form {
 
 article fieldset {
     overflow: hidden;
-    min-height: 50px;
+    min-height: 35px;
     border: none;
     background: none;
-}
-
-article fieldset:nth-child(even) {
-    /*background: #454545;*/
 }
 
 fieldset .wrapper {
@@ -393,30 +389,21 @@ input[type=checkbox].parent + label {
     justify-content: flex-start;
     align-items: center;
     position: relative;
-    width: 100%;
-    height: 50px;
+    padding-left: 15px;
     cursor: pointer;
     border-radius: 3px;
-    background: #454545;
+    background: rgba(65, 65, 65, 1);;
 }
 
-input[type=checkbox].parent + label h3 {
+input[type=checkbox].parent + label p {
     order: 3;
     margin: 0;
-    color: #FBFBFB;
+    color: rgba(251, 251, 251, 0.5);
+    transition: 0.2s ease all;
 }
 
-input[type=checkbox].parent + label::before {
-    content: '\203A';
-    order: 1;
-    width: 30px;
-    height: 100%;
-    color: rgba(255,255,255,0.3);
-    font-size: 32px;
-    font-weight: 700;
-    text-align: center;
-    line-height: 41px;
-    transition: 0.2s ease all;
+input[type=checkbox].parent:hover + label p, input[type=checkbox].parent:checked + label p {
+    color: rgba(251, 251, 251, 1);
 }
 
 input[type=checkbox].parent + label::after {
@@ -429,7 +416,7 @@ input[type=checkbox].parent + label::after {
     font-size: 24px;
     font-family: 'FontAwesome';
     text-align: center;
-    line-height: 44px;
+    line-height: 35px;
     border-left: 1px solid #1E1E1E;
     border-right: 1px solid #1E1E1E;
     background: -webkit-linear-gradient(to right, #E6E9F0, #EEF1F5);
@@ -437,45 +424,18 @@ input[type=checkbox].parent + label::after {
     transition: 0.2s ease all;
 }
 
-input[type=checkbox] + label {
-    cursor: pointer;
-    background: #1E1E1E;
-    z-index: 999;
-}
-
-input[type=checkbox].parent:checked + label {
-    background: #1E1E1E;
-}
-
-input[type=checkbox].parent:checked + label::before {
-    color: #FBFBFB;
-    line-height: 44px;
-    transform: rotate(90deg);
-}
-
 input[type=checkbox].parent + label:hover::after {
     color: rgba(99,99,99,0.8);
 }
 
-article fieldset fieldset {
-    position: relative;
-    visibility: hidden;
-    opacity: 0;
-    margin-top: -120px;
-    background: linear-gradient(to right, #E6E9F0, #EEF1F5);
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-    border: 1px solid #dcdcdc;
-    transition:  0.4s ease all, 0.2s 0s ease opacity, 0s ease background;
-    z-index: -999;
+input[type=checkbox].parent:checked + label::after {
+    color: #19CC95;
 }
 
-input[type=checkbox]:checked ~ fieldset {
-    visibility: visible;
-    opacity: 1;
-    margin-top: 0px;
-    transition:  0.4s ease all, 0.4s 0.2s ease opacity, 0s ease background;
-    z-index: 0;
+input[type=checkbox] + label {
+    cursor: pointer;
+    background: #1E1E1E;
+    z-index: 999;
 }
 
 .success {

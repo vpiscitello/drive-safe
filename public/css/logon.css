@@ -107,25 +107,21 @@ input[type=submit] {
     margin: 100px 30px 0 30px;
 }
 
-
 .login-field {
     display: flex;
-}
-
-.register-field {
-    display: block;
-}
-
-.login-field,
-.register-field {
-    position: relative;
-    margin: 10px;
+    align-items: center;
     justify-content: center;
-}
-
-.login-field label,
-.register-field label {
-    width: 20px;
+    flex-direction: row;
+    position: relative;
+    height: 35px;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-padding-before: 0;
+    -webkit-padding-start: 0;
+    -webkit-padding-end: 0;
+    -webkit-padding-after: 0;
+    min-width: 0;
+    margin: 5px 0px;
 }
 
 .password svg,
@@ -144,6 +140,10 @@ input[type=submit] {
 
 .login-field label {
     display: inline-flex;
+    flex: 1 1 24px;
+    order: 0;
+    width: 20px;
+    height: 100%;
     padding-right: 20px;
     padding-left: 20px;
     border-right: 1px solid #202020;
@@ -160,16 +160,6 @@ input[type=submit] {
 .login-field input:focus + label svg,
 .login-field input:valid + label svg {
     fill: #fbfbfb;
-}
-
-.login-field label,
-.login-field label {
-    order: 0;
-}
-
-.login-field input,
-.login-field input {
-    order: 1;
 }
 
 .login-top-row input {
@@ -189,8 +179,9 @@ input[type=submit] {
 
 .login-field input[type=password],
 .login-field input[type=text] {
+    flex: 0 1 100%;
+    order: 1;
     position: relative;
-    width: 97.2%;
     height: 35px;
     margin: 0 auto;
     color: rgba(220, 220, 220, 1);
@@ -246,6 +237,37 @@ input[type=submit] {
     background-color: rgba(20, 20, 20, 1);
 }
 
+fieldset.automatic {
+
+}
+
+input[type=checkbox].parent + label::after {
+    border-left: 1px solid #1E1E1E;
+    border-right: 1px solid #1E1E1E;
+    background: #2d2d2d;
+}
+
+input[type=checkbox].parent + label::after {
+    color: #636363;
+}
+
+input[type=checkbox].parent + label:hover::after {
+    color: #E2DEDE;
+    border-right: 1px solid #19CC95;
+}
+
+input[type=checkbox].parent:checked + label::after {
+    color: #19CC95;
+    border-right: 1px solid #19CC95;
+}
+
+input[type=checkbox].parent + label p::after {
+    content: "?";
+}
+
+input[type=checkbox].parent:checked + label p::after {
+    content: ".";
+}
 
 /** ****************************************************************************
 *** Login Bottom Help Row
