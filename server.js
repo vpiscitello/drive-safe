@@ -62,7 +62,8 @@ app.get('/', function(request, response, next) {
     console.log('== Got request for:', request.url, '\n');
     response.render('index', {
         title: 'Drive Safe',
-        pagestyle: 'index'
+        pagestyle: 'index',
+        secure: true
     });
 
 });
@@ -85,7 +86,8 @@ app.use('/profile', require(__dirname + '/modules/sv/account/profile.js'));
 app.get('*', function(request, response, next) {
     response.status(404).render('not-found', {
         title: 'Page Not Found',
-        pagestyle: 'server-error'
+        pagestyle: 'server-error',
+        secure: false
     });
     console.log('== File Not Found | Status Code', response.statusCode);
     console.log('== Request', request.path, '\n');
@@ -98,7 +100,8 @@ app.get('*', function(request, response, next) {
 app.use(function(error, request, response, next) {
     response.status(500).render('server-error', {
         title: 'Drive Safe Internal Server Error',
-        pagestyle: 'server-error'
+        pagestyle: 'server-error',
+        secure: false
     });
     console.log('== Internal Server Error | Status Code', response.statusCode);
     console.log('== Request', request.path, '\n');

@@ -16,7 +16,9 @@ router.get('/', function(request, response, next) {
 
     response.status(200).render('access', {
         title: 'Drive Safe',
-        pagestyle: 'logon'
+        pagestyle: 'logon',
+        secure: false,
+        logon: true
     });
 
 });

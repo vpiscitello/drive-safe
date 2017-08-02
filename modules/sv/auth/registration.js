@@ -16,7 +16,8 @@ router.get('/', function(request, response, next) {
 
     response.status(200).render('registration', {
         title: 'Drive Safe',
-        pagestyle: 'registration'
+        pagestyle: 'registration',
+        secure: false
     });
 
 });

@@ -1,0 +1,15 @@
+<nav class="hidden">
+    <ul>
+        {{#if secure}}
+            <li><a href=".."><div class="chevron"></div><p>Dashboard</p></a></li>
+            <li><a href="../profile"><div class="chevron"></div><p>Profile</p></a></li>
+            <li><a href="../rewards"><div class="chevron"></div><p>Rewards</p></a></li>
+        {{else}}
+            {{#if logon}}
+                <li><a href="../registration"><div class="chevron"></div><p>Register</p></a></li>
+            {{else}}
+                <li><a href="../access"><div class="chevron"></div><p>Login</p></a></li>
+            {{/if}}
+        {{/if}}
+    </ul>
+</nav>

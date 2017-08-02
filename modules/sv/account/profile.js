@@ -14,7 +14,8 @@ router.get('/', function(request, response, next) {
 
     response.status(200).render('profile', {
         title: 'Drive Safe',
-        pagestyle: 'profile'
+        pagestyle: 'profile',
+        secure: true
     });
 
 });
