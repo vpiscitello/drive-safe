@@ -9,18 +9,88 @@
         <section class="text">
         </section>
     </article>
-    <article class="settings">
+    <div class="notification-console"></div>
+    <article class="details">
         <section class="error-console"></section>
-        <form role="form">
-            <fieldset class="email">
-                <input id="email" type="checkbox" name="email" class="parent">
-                <label for="email"><h3></h3></label>
-                <fieldset class="email-field">
+        <form class="details-form" role="form" action="javascript:submitRegistrationForm();" method="POST">
+
+            <fieldset class="personal minimal">
+                <h3>Personal Information</h3>
+                <fieldset class="personal-fields">
                     <div class="wrapper">
-                        <input type="text" name="email-name">
+                        <input id="first-name" type="text" name="first-name" class="child">
+                        <label for="first-name"><h4>First name</h4></label>
+                    </div>
+                    <div class="wrapper">
+                        <input id="last-name" type="text" name="last-name" class="child">
+                        <label for="last-name"><h4>Last name</h4></label>
+                    </div>
+                    <div class="wrapper">
+                        <input id="birthday" type="text" name="birthday" class="child">
+                        <label for="birthday"><h4>Birthday</h4></label>
+                    </div>
+                    <div class="wrapper">
+                        <input id="phone" type="text" name="phone" class="child">
+                        <label for="phone"><h4>Phone</h4></label>
+                    </div>
+                    <div class="wrapper">
+                        <input id="location" type="text" name="location" class="child">
+                        <label for="location"><h4>Location</h4></label>
                     </div>
                 </fieldset>
             </fieldset>
+
+            <fieldset class="vehicle minimal">
+                <h3>Vehicle Information</h3>
+                <fieldset class="vehicle-fields">
+                    <div class="wrapper">
+                        <input id="make" type="text" name="make" class="child">
+                        <label for="make"><h4>Make</h4></label>
+                    </div>
+                    <div class="wrapper">
+                        <input id="model" type="text" name="model" class="child">
+                        <label for="model"><h4>Model</h4></label>
+                    </div>
+                    <div class="wrapper">
+                        <input id="insurance" type="text" name="insurance" class="child">
+                        <label for="insurance"><h4>Insurance Number</h4></label>
+                    </div>
+                </fieldset>
+            </fieldset>
+
+
+            <fieldset class="account minimal">
+                <h3>Account Information</h3>
+                <fieldset class="account-fields">
+                    <p class="requirements">
+                        Your email must be <span class="email-note real need">valid</span> and <span class="email-note match need">match</span> the confirmation email field.
+                    </p>
+                    <div class="wrapper">
+                        <input id="email" type="email" name="email" class="child">
+                        <label for="email"><h4>Email</h4></label>
+                    </div>
+                    <div class="wrapper">
+                        <input id="confirm-email" type="email" name="confirm-email" class="child">
+                        <label for="confirm-email"><h4>Confirm Email</h4></label>
+                    </div>
+                    <p class="requirements">
+                        Your password must be at least <span class="password-note length need">eight characters long</span>, contain at one <span class="password-note uppercase need">uppercase</span>, <span class="password-note number need">number</span>, <span class="password-note special need">special</span> character, and <span class="password-note match need">match</span> the confirmation password field.
+                    </p>
+                    <div class="wrapper">
+                        <input id="password" type="password" name="password" class="child">
+                        <label for="password"><h4>Password</h4></label>
+                    </div>
+                    <div class="wrapper">
+                        <input id="confirm-password" type="password" name="confirm-password" class="child">
+                        <label for="confirm-password"><h4>Confirm Password</h4></label>
+                    </div>
+                </fieldset>
+            </fieldset>
+
+            <fieldset class="submit">
+                <input id="submit" type="submit" name="submit" value="register" class="parent">
+            </fieldset>
+
         </form>
     </article>
 </main>

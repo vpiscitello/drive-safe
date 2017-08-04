@@ -1,3 +1,61 @@
+article.details {
+    margin-top: 40px;
+}
+
+article.details fieldset {
+    margin: 0;
+    padding: 0 10px;
+}
+
+.details-form fieldset h3 {
+    position: relative;
+    left: -10px;
+    width: calc(100% - 20px);
+    height: 42px;
+    margin: 0 0 24px 0;
+    padding: 0 20px;
+    font-size: 1.2em;
+    font-weight: 400;
+    line-height: 42px;
+    letter-spacing: 0.05em;
+    font-family: 'Muli';
+    color: #FBFBFB;
+    background: #1E1E1E;
+}
+
+.details-form fieldset input {
+    width: 100%;
+}
+
+.details-form fieldset input:focus, .details-form fieldset input.valid {
+    border-bottom: 1px solid #19CC95;
+}
+
+.details-form fieldset input:focus + label, .details-form fieldset input.valid + label {
+    font-weight: 600;
+    color: #19CC95;
+}
+
+.details-form fieldset input.invalid {
+    border-bottom: 1px solid #E74C3C;
+}
+
+.details-form fieldset input.invalid + label {
+    font-weight: 600;
+    color: #E74C3C;
+}
+
+.details-form fieldset label h4 {
+    position: relative;
+    height: 100%;
+    margin: 0;
+    font-size: 0.9em;
+    font-weight: 200;
+    line-height: 20px;
+    letter-spacing: 0.05em;
+    font-family: 'Muli';
+}
+
 input[type=checkbox].parent + label::before {
     content: '\203A';
     order: 1;
@@ -27,4 +85,30 @@ input[type=checkbox]:checked ~ fieldset {
     margin-top: 0px;
     transition:  0.4s ease all, 0.4s 0.2s ease opacity, 0s ease background;
     z-index: 0;
+}
+
+input[type='submit'] {
+    width: 100%;
+    padding: 16px;
+    padding: 1rem;
+    color: #fbfbfb;
+    border-radius: 2rem;
+    background-color: rgba(30, 30, 30, 0.95);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .15em;
+    cursor: pointer;
+}
+
+input[type='submit']:hover {
+    background-color: rgba(20, 20, 20, 1);
+}
+
+article.details fieldset.submit {
+    margin: 40px 0;
+}
+
+p.requirements {
+    padding: 0 15px;
+    font-size: 0.9em;
 }

@@ -3,8 +3,13 @@ var path = require('path'),
     session = require('express-session'),
     exphbs = require('express-handlebars'),
     compression = require('compression'),
-    assert = require('assert'),
     bodyParser = require('body-parser'),
+    assert = require('assert'),
+    MongoClient = require('mongodb').MongoClient,
+    MongoStore = require('connect-mongo')(session),
+    mongoose = require('mongoose'),
+    models = require(__dirname + '/modules/db/models.js'),
+    passport = require('passport'),
     checkAuth = require(__dirname + '/modules/sv/auth/checkAuth.js'),
     helpers = require(__dirname + '/modules/sv/helpers/handlebar-helpers.js')();
 
@@ -16,7 +21,13 @@ require('dotenv').config({
 Resource Setup
 ******************************************************************************/
 var app = express(),
-    port = process.env.PORT || 3000;
+    port = process.env.PORT || 3000,
+    mongoDB, mongoHost = process.env.MONGO_HOST,
+    mongoPort = process.env.MONGO_PORT || 27017,
+    mongoUser = process.env.MONGO_USER,
+    mongoPassword = process.env.MONGO_PASSWORD,
+    mongoDBName = process.env.MONGO_DB,
+    mongoURL = 'mongodb://' + mongoUser + ':' + mongoPassword + '@' + mongoHost + ':' + mongoPort + '/' + mongoDBName;
 
 app.set('trust proxy');
 
@@ -39,14 +50,56 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     proxy: true,
     cookie: {
-        secure: true,
         expires: 24 * 60 * 60 * 1000,
         maxAge: 24 * 60 * 60 * 1000
-    }
+    },
+    store: new MongoStore({
+      url: mongoURL,
+      ttl: 3 * 24 * 60 * 60,
+      autoReconnect: true
+    })
 }));
 
-app.listen(port, function() {
-    console.log("== Listening on port", port, "\n");
+app.use(passport.initialize());
+app.use(passport.session());
+
+/******************************************************************************
+Database Setup
+******************************************************************************/
+
+mongoose.connect(mongoURL, {
+     useMongoClient: true
+});
+
+mongoose.connection.on('error', function(){
+    console.log('== Unable to make connection with Mongoose to Database.');
+    process.exit();
+});
+
+mongoose.connection.once('open', function() {
+    console.log('== Connected to the Database through mongoose');
+});
+
+MongoClient.connect(mongoURL, function(error, db) {
+    if(error) {
+        console.log("== Unable to make connection to MongoDB Database.");
+        throw error;
+    }
+
+    mongoDB = db;
+
+    app.listen(port, function() {
+        console.log("== Listening on port", port, "\n");
+    });
+
+});
+
+/******************************************************************************
+Give Routes access to MongoDB
+******************************************************************************/
+app.all('*', function(request, response, next) {
+    request.database = mongoDB;
+    next();
 });
 
 
@@ -54,11 +107,10 @@ app.listen(port, function() {
 Base Server Setup
 ******************************************************************************/
 
-
 /******************************************************************************
 Home Page Request
 ******************************************************************************/
-app.get('/', function(request, response, next) {
+app.get('/', checkAuth, function(request, response, next) {
     console.log('== Got request for:', request.url, '\n');
     response.render('index', {
         title: 'Drive Safe',
@@ -73,12 +125,12 @@ app.use('/registration', require(__dirname + '/modules/sv/auth/registration.js')
 app.use('/policy', require(__dirname + '/modules/sv/etc/policy.js'));
 
 // Uncomment for unsecure routes
-app.use('/rewards', require(__dirname + '/modules/sv/account/rewards.js'));
-app.use('/profile', require(__dirname + '/modules/sv/account/profile.js'));
+// app.use('/rewards', require(__dirname + '/modules/sv/account/rewards.js'));
+// app.use('/profile', require(__dirname + '/modules/sv/account/profile.js'));
 
 // Uncomment for secure routes
-// app.use('/rewards', checkAuth, require(__dirname + '/modules/sv/account/rewards.js'));
-// app.use('/profile', checkAuth, require(__dirname + '/modules/sv/account/profile.js'));
+app.use('/rewards', checkAuth, require(__dirname + '/modules/sv/account/rewards.js'));
+app.use('/profile', checkAuth, require(__dirname + '/modules/sv/account/profile.js'));
 
 /******************************************************************************
 404 Error Handling
