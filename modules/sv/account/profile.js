@@ -9,7 +9,7 @@ var router = express.Router();
 Main Profile Request Handler
 ******************************************************************************/
 router.get('/', function(request, response, next) {
-    console.log('== Recieved New Rewards Request\n');
+    console.log('== Recieved New Profile Request\n');
 
 
     response.status(200).render('profile', {

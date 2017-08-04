@@ -77,7 +77,7 @@ mongoose.connection.on('error', function(){
 });
 
 mongoose.connection.once('open', function() {
-    console.log('== Connected to the Database through mongoose');
+    console.log('== Connected to the Database through Mongoose');
 });
 
 MongoClient.connect(mongoURL, function(error, db) {
@@ -117,7 +117,6 @@ app.get('/', checkAuth, function(request, response, next) {
         pagestyle: 'index',
         secure: true
     });
-
 });
 
 app.use('/access', require(__dirname + '/modules/sv/auth/access.js'));

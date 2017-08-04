@@ -13,7 +13,6 @@ Policy Get Request
 ******************************************************************************/
 router.get('/', function(request, response) {
     console.log("== Got access request", "\n");
-    //Render the login screen and display
     response.status(200).render(__dirname + '/../../../views/policy', {
         title: 'Drive Safe Policies',
         pagestyle: 'policy',
@@ -27,7 +26,6 @@ Terms of Service Get Request
 ******************************************************************************/
 router.get('/terms-of-service', function(request, response) {
     console.log("== Got access request", "\n");
-    //Render the login screen and display
     response.status(200).render(__dirname + '/../../../views/tos', {
         title: 'Drive Safe: Terms of Service',
         pagestyle: 'policy',
@@ -41,7 +39,6 @@ Privacy Policy Get Request
 ******************************************************************************/
 router.get('/privacy', function(request, response) {
     console.log("== Got access request", "\n");
-    //Render the login screen and display
     response.status(200).render(__dirname + '/../../../views/privacy', {
         title: 'Drive Safe: Privacy Policy',
         pagestyle: 'policy',
