@@ -13,8 +13,14 @@
 }
 
 .profileSetting {
-	list-style: none
+	color: #1E1E1E;
+	background-color: lightgray;
+	margin: 10px;
+	padding: 10px;
+	list-style: none;
 }
+
+
 
 /* Box styles. SOURCE: https://www.quackit.com/html/codes/html_scrollbars.cfm */
 .scrollBox {
