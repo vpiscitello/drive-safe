@@ -24,7 +24,7 @@
 }
 
 .profileSetting {
-	width: 100%;
+	width: calc(100% - 20px);
 	text-align: left;
 	list-style: none;
 }
@@ -38,7 +38,7 @@
     letter-spacing: 0.05em;
     font-family: 'Muli';
 	width: calc(100% - 20px);
-	height: calc(100% - 200px);
+	height: 100%;
 	overflow: scroll;
 }
 
