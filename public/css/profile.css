@@ -1,6 +1,6 @@
 .profileMenuOptions {
 	width: calc(100% - 20px);
-	margin-top: 40px;
+	margin-top: 10px;
     height: 42px;
     padding: 0 20px;
     font-size: 1.2em;
@@ -10,10 +10,6 @@
     font-family: 'Muli';
     color: #FBFBFB;
     background: #1E1E1E;
-}
-
-.profileScrollList {
-	width: 100%;
 }
 
 .profileSettingOption {
@@ -41,7 +37,7 @@
     font-weight: 200;
     letter-spacing: 0.05em;
     font-family: 'Muli';
-	width: 100%;
+	width: calc(100% - 20px);
 	height: calc(100% - 200px);
 	overflow: scroll;
 }
