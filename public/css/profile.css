@@ -29,6 +29,7 @@
 .profileSetting {
 	width: 100%;
 	text-align: left;
+	list-style: none;
 }
 
 /* Box styles. SOURCE: https://www.quackit.com/html/codes/html_scrollbars.cfm */
