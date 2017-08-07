@@ -1,6 +1,7 @@
 .profileMenuOptions {
 	width: calc(100% - 35px);
 	margin-top: 10px;
+	margin-bottom: 0;
     height: 42px;
     padding: 0 20px;
     font-size: 1.2em;
