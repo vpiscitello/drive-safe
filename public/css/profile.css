@@ -12,6 +12,10 @@
     background: #1E1E1E;
 }
 
+.profileScrollList {
+	width: 100%;
+}
+
 .profileSettingOption {
 	color: #1E1E1E;
 	width: calc(100% - 20px);
@@ -21,7 +25,9 @@
 	list-style: none;
 }
 
-
+.profileSetting {
+	width: 100%;
+}
 
 /* Box styles. SOURCE: https://www.quackit.com/html/codes/html_scrollbars.cfm */
 .scrollBox {
