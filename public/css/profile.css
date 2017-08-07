@@ -14,7 +14,7 @@
 
 .profileSettingOption {
 	color: #1E1E1E;
-	width: 100%;
+	width: calc(100% - 20px);
 	background-color: lightgray;
 	margin: 5px;
 	padding: 0 1px;
