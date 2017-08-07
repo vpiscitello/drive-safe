@@ -14,9 +14,10 @@
 
 .profileSetting {
 	color: #1E1E1E;
+	width: calc(100% - 20px);
 	background-color: lightgray;
 	margin: 10px;
-	padding: 10px;
+	padding: 0 20px;
 	list-style: none;
 }
 
