@@ -15,10 +15,17 @@ router.get('/', function(request, response, next) {
     response.status(200).render('profile', {
         title: 'Drive Safe',
         pagestyle: 'profile',
-        secure: true
+        secure: true,
+		userData: 	{
+			firstName: request.user.profile.firstname,
+			lastName: request.user.profile.lastname,
+			birthday: request.user.profile.birthday,
+			phone: request.user.profile.phone,
+			insurance: request.user.vehicle.insurance,
+			make: request.user.vehicle.make,
+			model: request.user.vehicle.model
+		}
     });
-
 });
-
 
 module.exports = router;
