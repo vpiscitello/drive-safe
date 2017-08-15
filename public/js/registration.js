@@ -2,18 +2,21 @@
 // TODO: Validate non-account related fields
 // TODO: Validate all fields before submitting form
 
-$('.details-form').submit(function(event){
-    submitRegistrationForm();
-    $('.submit input').attr('disabled', 'disabled');
+$('.details-form').submit( function(event){
     event.preventDefault();
-    return false;
+    submitRegistrationForm(function(status) {
+        if (status == "SUCCESS") {
+            $('.submit input').attr('disabled', 'disabled');
+            return false;
+        }
+    });
 });
 
 
 /******************************************************************************
 Base Validation Controller
 ******************************************************************************/
-(function baseValidation() {
+(function baseValidationInit() {
     var firstname = document.getElementsByName('first-name')[0],
         lastname = document.getElementsByName('last-name')[0],
         phone = document.getElementsByName('phone')[0],
@@ -119,9 +122,8 @@ Base Validation Controller
         else { insurance.classList.remove('valid'); insurance.classList.add('invalid');}
     });
 
-
-
 })();
+
 
 /******************************************************************************
 Email Validation Controller
@@ -444,7 +446,8 @@ function notifyPasswordValidity(note, clear, flags, sender, code){
 Submit Registration Form
 ******************************************************************************/
 
-function submitRegistrationForm() {
+function submitRegistrationForm(callback) {
+    var clear = false;
     var firstname = document.getElementsByName('first-name')[0].value,
         lastname = document.getElementsByName('last-name')[0].value,
         phone = document.getElementsByName('phone')[0].value,
@@ -460,37 +463,47 @@ function submitRegistrationForm() {
 
     document.querySelector('.submit input').classList.add('submitted');
 
-
-    $.ajax({
-        url: './registration/register',
-        type: 'POST',
-        dataType: 'JSON',
-        data: {
-            firstname: firstname,
-            lastname: lastname,
-            birthday: birthday,
-            phone: phone,
-            location: location,
-            make: make,
-            model: model,
-            insurance: insurance,
-            email: email,
-            password: password
-        }
-    })
-    .done(function(response) {
-        console.log("success: ", response);
-        displayRegistrationResponse(response.msg, 'success', 'success');
-
-        setTimeout(function() { window.location = '../access'; }, 2500);
-
-    })
-    .fail(function(error) {
-        console.log("error: ", error);
-        errorResponse = JSON.parse(error.responseText);
-
-        displayRegistrationResponse(errorResponse.msg, 'failed', 'invalid');
+    manualFieldCheck(function callback(success) {
+        if (success) { clear = true; }
     });
+
+    if (clear) {
+        $.ajax({
+            url: './registration/register',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                firstname: firstname,
+                lastname: lastname,
+                birthday: birthday,
+                phone: phone,
+                location: location,
+                make: make,
+                model: model,
+                insurance: insurance,
+                email: email,
+                password: password
+            }
+        })
+        .done(function(response) {
+            console.log("SUCCESS: ", response.msg);
+            displayRegistrationResponse(response.msg, 'success', 'success');
+
+            // setTimeout(function() { window.location = '../access'; }, 2500);
+
+            callback(true);
+
+        })
+        .fail(function(error) {
+            errorMessage = JSON.parse(error.responseText).msg;
+            console.log("FAILED: ", errorMessage);
+
+            displayRegistrationResponse(errorMessage, 'failed', 'invalid');
+
+            callback(false);
+
+        });
+    }
 
 }
 
@@ -509,6 +522,57 @@ function displayRegistrationResponse(message, status, type) {
 
 }
 
+/******************************************************************************
+Manually Check all Fields
+******************************************************************************/
+
+function manualFieldCheck(callback) {
+    var firstname = document.getElementsByName('first-name')[0],
+        lastname = document.getElementsByName('last-name')[0],
+        phone = document.getElementsByName('phone')[0],
+        birthday = document.getElementsByName('birthday')[0],
+        location = document.getElementsByName('location')[0],
+        make = document.getElementsByName('make')[0],
+        model = document.getElementsByName('model')[0],
+        insurance = document.getElementsByName('insurance')[0],
+        email = document.getElementsByName('email')[0],
+        vmail = document.getElementsByName('confirm-email')[0],
+        password = document.getElementsByName('password')[0],
+        vassword = document.getElementsByName('confirm-password')[0];
+
+    if (!(firstname.value.length > 0)) { callback(false); }
+
+    if (!(lastname.value.length > 0)) { callback(false); }
+
+    if (!(phone.value.length > 0)) { callback(false); }
+
+    if (!(birthday.value.length > 0)){ callback(false); }
+
+    if (!(location.value.length > 0)) { callback(false); }
+
+    if (!(make.value.length > 0)) { callback(false); }
+
+    if (!(model.value.length > 0)) { callback(false); }
+
+    if (!(insurance.value.length > 0)) { callback(false); }
+
+    if(!((/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i).test(email))) { callback(false); }
+
+    if(vmail.length > 0) { callback(false); }
+
+    if(!(password.length > 8)) { callback(false); }
+
+    if(!(/[A-Z]/.test(password))) { callback(false); }
+
+    if(!(/[0-9]/.test(password))) { callback(false); }
+
+    if(/^[a-zA-Z0-9- ]*$/.test(password)) { callback(false); }
+
+    if(!(password.value == vassword.value)) { callback(false); }
+
+    callback(true);
+
+}
 
 /******************************************************************************
 Codes Remove
