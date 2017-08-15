@@ -121,17 +121,19 @@ app.get('/', checkAuth, function(request, response, next) {
 
 app.use('/access', require(__dirname + '/modules/sv/auth/access.js'));
 app.use('/registration', require(__dirname + '/modules/sv/auth/registration.js'));
-app.use('/linkage', require(__dirname + '/modules/sv/auth/linkage.js'));
 app.use('/policy', require(__dirname + '/modules/sv/etc/policy.js'));
 
 // Uncomment for unsecure routes
 // app.use('/rewards', require(__dirname + '/modules/sv/account/rewards.js'));
 // app.use('/profile', require(__dirname + '/modules/sv/account/profile.js'));
+// app.use('/test', require(__dirname + '/modules/sv/etc/test.js'));
+// app.use('/linkage', require(__dirname + '/modules/sv/auth/linkage.js'));
 
 // Uncomment for secure routes
 app.use('/rewards', checkAuth, require(__dirname + '/modules/sv/account/rewards.js'));
 app.use('/profile', checkAuth, require(__dirname + '/modules/sv/account/profile.js'));
 app.use('/test', checkAuth, require(__dirname + '/modules/sv/etc/test.js'));
+app.use('/linkage', checkAuth, require(__dirname + '/modules/sv/auth/linkage.js'));
 
 /******************************************************************************
 404 Error Handling

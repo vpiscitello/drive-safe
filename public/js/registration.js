@@ -489,7 +489,7 @@ function submitRegistrationForm(callback) {
             console.log("SUCCESS: ", response.msg);
             displayRegistrationResponse(response.msg, 'success', 'success');
 
-            // setTimeout(function() { window.location = '../access'; }, 2500);
+            setTimeout(function() { window.location = '../access'; }, 2500);
 
             callback(true);
 
