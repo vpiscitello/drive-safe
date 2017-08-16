@@ -15,7 +15,10 @@ router.get('/', function(request, response, next) {
     response.status(200).render('rewards', {
         title: 'Drive Safe',
         pagestyle: 'rewards',
-        secure: true
+        secure: true,
+        userData: 	{
+			points: request.user.stats.miles_driven
+		}
     });
 
 });
