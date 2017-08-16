@@ -6,6 +6,20 @@
 var exports = module.exports = {};
 
 
+exports.getRewards = function(req, res){
+	var context = {};
+	pool.query("SELECT distance*minutes/100 FROM ds_driver WHERE username=?; ",[req.body.username],
+		function(err, result) {
+			if (err) {
+				console.log(err);
+				return;
+			}
+			context.results = ;
+		res.send(context);
+		});
+
+}
+
 
 exports.getDrivers = function(req,res){
 	var context = {};
@@ -84,14 +98,14 @@ exports.addMinutes = function (req,res){
 
 exports.addEmergencyMinutes = function (req,res){
 	var context = {};
-	pool.query("UPDATE ds_driver SET emergency_minutes=emergency_minutes+? WHERE username=?;",[req.body.emergency_minutes, req.body.username],
-		function(err, result) {
-			if (err) {
+	pool.query("SELECT distance*minutes/100 FROM ds_driver WHERE username=?;",[req.body.username],
+		function(err, rows, fields){
+			if(err){
 				console.log(err);
 				return;
 			}
-			context.results = 'emergency minutes occurred';
-		res.send(context);
+			context.results = rows;
+			res.send(context);
 		});
 }
 
