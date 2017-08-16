@@ -57,9 +57,19 @@ router.post('/updateProfile', function(request, response, next) {
 	request.database.collection('users').find(
 	{"authentication.local.email": request.user.authentication.local.email}).toArray(function(err, response) {
 		if(response) {
-		console.log(response);		
+		request.database.collection('users').update(
+		{"authentication.local.email": request.user.authentication.local.email},
+		{
+			$set: {
+			"profile.phone": request.body.phoneUpdate,
+			"profile.location": request.body.locationUpdate,
+			"vehicle.insurance": request.body.insuranceUpdate,
+			"vehicle.make": request.body.makeUpdate,
+			"vehicle.model": request.body.modelUpdate			
+		}});
 		}
 });
+		response.redirect('/profile');
 		});
 
 
