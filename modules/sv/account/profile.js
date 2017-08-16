@@ -55,7 +55,7 @@ router.get('/updateProfile', function(request, response, next) {
 router.post('/updateProfile', function(request, response, next) {
 	console.log('== Received New Update Profile Request\n');
 	request.database.collection('users').find(
-	{"authentication.local.email": }).toArray(function(err, response) {
+	{"authentication.local.email": request.user.authentication.local.email}).toArray(function(err, response) {
 		if(response) {
 		console.log(response);		
 		}
