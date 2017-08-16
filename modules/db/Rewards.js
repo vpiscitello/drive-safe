@@ -9,13 +9,13 @@ var exports = module.exports = {};
 exports.getRewards = function(req, res){
 	var context = {};
 	pool.query("SELECT distance*minutes/100 FROM ds_driver WHERE username=?; ",[req.body.username],
-		function(err, result) {
-			if (err) {
+		function(err, rows, fields){
+			if(err){
 				console.log(err);
 				return;
 			}
-			context.results = ;
-		res.send(context);
+			context.results = rows;
+			res.send(context);
 		});
 
 }
