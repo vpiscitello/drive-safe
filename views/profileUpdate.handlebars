@@ -1,0 +1,43 @@
+<div class="overlay"></div>
+
+{{> header}}
+
+{{> menu}}
+
+<main>
+	<div class="scrollBox">
+	<h3 class="profileMenuOptions">Profile Settings</h3>	
+		<form action="/profile/updateProfile" method="POST">
+			<ul class="profileSetting">
+				<li class="profileSettingOption">First name: {{userData.firstName}}</li>
+				<li class="profileSettingOption">Last name: {{userData.lastName}}</li>
+				<label for="emailUpdate">Email:</label>
+				<input type="text" name="emailUpdate" id="email" value="{{userData.email}}" size="25" />
+				<label for="birthdayUpdate">Birthday: </label>
+				<input type="text" id="birthday" name="birthdayUpdate" value="{{userData.birthday}}" />
+				<label for="phoneUpdate">Phone: </label>
+				<input type="text" id="phone" name="phoneUpdate" value="{{userData.phone}}" />
+				<label for="locationUpdate">Location: </label>
+				<input type="text" id="location" name="locationUpdate" value="{{userData.location}}" />
+			</ul>				
+		       
+	<h3 class="profileMenuOptions">Vehicle Settings</h3>	
+		<ul class="profileSetting">
+			<label for="makeUpdate">Make: </label>
+			<input type="text" id="make" name="makeUpdate" value="{{userData.make}}" />
+			<label for="modelUpdate">Model: </label>
+			<input type="text" id="model" name="modelUpdate" value="{{userData.model}}" />
+			<label for="insuranceUpdate">Insurance number: </label>
+			<input type="text" id="insurance" name="insuranceUpdate" value="{{userData.insurance}}" />
+		</ul>
+	<h3 class="profileMenuOptions">Reward Settings</h3>
+		<ul class="profileSetting">
+			<li class="profileSettingOption">Current Reward Choice: Amazon</li>
+		</ul>
+			<input type="submit" value="Save updates">
+		</form>
+	</div>
+
+</main>
+
+{{> footer}}

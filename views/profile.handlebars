@@ -10,8 +10,10 @@
 			<ul class="profileSetting">
 				<li class="profileSettingOption">First name: {{userData.firstName}}</li>
 				<li class="profileSettingOption">Last name: {{userData.lastName}}</li>
+				<li class="profileSettingOption">Email: {{userData.email}}</li>
 				<li class="profileSettingOption">Birthday: {{userData.birthday}}</li>
 				<li class="profileSettingOption">Phone number: {{userData.phone}}</li>
+				<li class="profileSettingOption">Location: {{userData.location}}</li>
 			</ul>				
 		       
 	<h3 class="profileMenuOptions">Vehicle Settings</h3>	
@@ -24,6 +26,7 @@
 		<ul class="profileSetting">
 			<li class="profileSettingOption">Current Reward Choice: Amazon</li>
 		</ul>
+	<input type="button" onclick="location.href='/profile/updateProfile';" value="Update profile" />
 	</div>
 </main>
 
